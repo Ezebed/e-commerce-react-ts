@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { Input, InputGroup, InputLeftElement, Avatar } from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
 
 export default function Header(): JSX.Element {
   return (
@@ -9,10 +11,20 @@ export default function Header(): JSX.Element {
         </Link>
       </div>
       <div className="headerCenter">
-        <div className="search"></div>
+        <InputGroup>
+          <InputLeftElement>
+            <SearchIcon color="text.200" />
+          </InputLeftElement>
+          <Input
+            bgColor="dark.200"
+            color="text.200"
+            variant="filled"
+            placeholder="Search"
+          />
+        </InputGroup>
       </div>
       <div className="headerRight">
-        <div className="userLogo"></div>
+        <Avatar />
       </div>
     </header>
   );

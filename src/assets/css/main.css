@@ -84,20 +84,6 @@ header {
     text-decoration: none;
   }
 
-  .search {
-    height: 35px;
-    width: 300px;
-    background: var(--darkSecundary);
-    border-radius: 5px;
-  }
-
-  .userLogo {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background: var(--textPrimary);
-  }
-
   .ezeBox {
     height: 15rem;
     width: 10rem;
