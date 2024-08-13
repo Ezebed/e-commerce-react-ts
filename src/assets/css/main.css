@@ -13,16 +13,14 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--background) !important;
 }
 
-main {
-  background: red;
+/* main {
 }
 
 aside {
-  background: lime;
-}
+} */
 
 header {
   background: var(--darkPrimary);
@@ -31,6 +29,7 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 8px;
+  margin-bottom: 10px;
 }
 
 .headerLeft {
@@ -63,11 +62,15 @@ header {
     display: flex;
     height: 100%;
     justify-content: space-between;
+    flex-direction: row-reverse;
+    gap: 1em;
   }
 
   main {
-    width: 70%;
-    display: flex;
+    width: 75%;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
     padding: 10px;
   }
 
@@ -93,5 +96,12 @@ header {
     width: 40px;
     border-radius: 50%;
     background: var(--textPrimary);
+  }
+
+  .ezeBox {
+    height: 15rem;
+    width: 10rem;
+    background: var(--darkSecundary);
+    border-radius: 5px;
   }
 }

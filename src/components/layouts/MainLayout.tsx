@@ -1,6 +1,7 @@
 import "@/assets/css/main.css";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Aside from "@/components/Aside";
 
 type mainLayout = {
   children: ReactNode;
@@ -9,22 +10,12 @@ type mainLayout = {
 export default function MainLayout({ children }: mainLayout): JSX.Element {
   return (
     <>
-      <header>
-        <div className="headerLeft">
-          <Link to="/" className="siteLogo ">
-            EzeStore
-          </Link>
-        </div>
-        <div className="headerCenter">
-          <div className="search"></div>
-        </div>
-        <div className="headerRight">
-          <div className="userLogo"></div>
-        </div>
-      </header>
+      <Header />
       <div className="mainLayout">
         <main>{children}</main>
-        <aside>hola</aside>
+        <aside>
+          <Aside />
+        </aside>
       </div>
     </>
   );
