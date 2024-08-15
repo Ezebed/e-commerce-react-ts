@@ -10,6 +10,7 @@
   margin: 0;
   box-sizing: border-box;
   color: var(--textPrimary);
+  font-size: 16px;
 }
 
 body {
@@ -55,6 +56,46 @@ header {
 
 .mainLayout {
   padding: 0 1em;
+}
+
+.productCard {
+  position: relative;
+  background: var(--darkSecundary);
+  width: 13rem;
+  height: 16rem;
+  border-radius: 5px;
+}
+
+.productTitle {
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.productContent {
+  padding: 0 0.5rem;
+}
+
+.productPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.productDescription {
+  height: 2lh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  /* line-height: 1; */
+}
+
+.productImg {
+  height: 9rem;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
 }
 
 @media (width > 480px) {

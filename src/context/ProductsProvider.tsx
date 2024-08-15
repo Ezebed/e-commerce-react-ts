@@ -2,6 +2,7 @@ import { Products } from "@/utils/types/ProductTypes";
 import { ProductsContext } from "./ProductsContext";
 import { useEffect, useState, PropsWithChildren } from "react";
 import { Fetcher } from "@/services/fetcher";
+import { apiBaseUrl } from "@/utils/constants.d";
 
 export default function ProductsProvider({
   children,
@@ -11,7 +12,7 @@ export default function ProductsProvider({
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL;
+        const apiUrl = `${apiBaseUrl}products`;
         const data = await Fetcher(apiUrl);
         setProducts(data);
       } catch (error) {
