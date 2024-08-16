@@ -1,4 +1,5 @@
 import { Product } from "@/utils/types/ProductTypes.d";
+import ImgCarousel from "@/components/Product/ImgCarousel";
 
 export default function ProductCard({
   id,
@@ -13,7 +14,7 @@ export default function ProductCard({
   return (
     <div className="productCard">
       <p className="productTitle">{title}</p>
-      <img className="productImg" src={images[0]} alt={title} />
+      <ImgCarousel imgUrl={images} />
       <div className="productContent">
         <span className="productPrice">{price} $</span>
         <p className="productDescription">{description}</p>
