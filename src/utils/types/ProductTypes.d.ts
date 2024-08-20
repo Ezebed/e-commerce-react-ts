@@ -1,5 +1,7 @@
 export type Products = Product[];
 
+export type Categories = Category[];
+
 export interface Product {
   id: number;
   title: string;

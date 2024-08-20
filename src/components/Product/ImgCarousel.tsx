@@ -1,5 +1,6 @@
-import { Box, Img } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import imgPlaceholder from "@/assets/img/img_placeholder.webp";
 
 export type ImgCarouselProps = {
   imgUrl: string[];
@@ -22,10 +23,11 @@ export default function ImgCarousel({ imgUrl }: ImgCarouselProps): JSX.Element {
     <Box width="100%" height="9rem" position="relative">
       <Box display="flex" overflow="hidden" width="100%" height="100%">
         {imgUrl.map((imgSrc, index) => (
-          <Img
+          <Image
             key={index}
             src={imgSrc}
             alt={`alt_${imgSrc}`}
+            fallbackSrc={imgPlaceholder}
             className="carouselImg"
             style={{ translate: `${-100 * imgIndex}%` }}
           />

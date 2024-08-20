@@ -2,26 +2,20 @@ import MainLayout from "@/components/layouts/MainLayout";
 import { ProductsContext } from "@/context/ProductsContext";
 import { useContext } from "react";
 
-import ProductCard from "@/components/Product/ProductCard";
+import ProductaCardList from "@/components/Product/ProductCarList";
 
 export default function prueba(): JSX.Element {
-  const products = useContext(ProductsContext);
+  const productsContext = useContext(ProductsContext);
+
+  if (!productsContext) {
+    return <p>Loading....</p>;
+  }
+
+  const { products } = productsContext;
 
   return (
     <MainLayout>
-      {products?.map((product) => (
-        <ProductCard
-          key={product.id}
-          id={product.id}
-          title={product.title}
-          description={product.description}
-          category={product.category}
-          price={product.price}
-          images={product.images}
-          creationAt={product.creationAt}
-          updatedAt={product.updatedAt}
-        />
-      ))}
+      <ProductaCardList products={products!} />
     </MainLayout>
   );
 }

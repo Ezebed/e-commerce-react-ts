@@ -1,4 +1,12 @@
 import { createContext } from "react";
-import { type Products } from "@/utils/types/ProductTypes.d";
+import { Categories, type Products } from "@/utils/types/ProductTypes.d";
 
-export const ProductsContext = createContext<Products | undefined>(undefined);
+export type productsContextResponse = {
+  products: Products | undefined;
+  categories: Categories | undefined;
+  searchProduct: (productTitle: string) => void;
+};
+
+export const ProductsContext = createContext<
+  productsContextResponse | undefined
+>(undefined);

@@ -1,8 +1,34 @@
 import { Link } from "react-router-dom";
-import { Input, InputGroup, InputLeftElement, Avatar } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Button,
+  Avatar,
+} from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import { ProductsContext } from "@/context/ProductsContext";
+import { useContext, useState, ChangeEvent } from "react";
 
 export default function Header(): JSX.Element {
+  const [productTitle, setProductTitle] = useState<string>("");
+  const productContext = useContext(ProductsContext);
+
+  if (!productContext) {
+    return <p>Loading...</p>;
+  }
+
+  const { searchProduct } = productContext;
+
+  const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setProductTitle(e.target.value);
+  };
+
+  const HandleClick = () => {
+    if (productTitle) searchProduct(productTitle);
+  };
+
   return (
     <header>
       <div className="headerLeft">
@@ -17,10 +43,23 @@ export default function Header(): JSX.Element {
           </InputLeftElement>
           <Input
             bgColor="dark.200"
+            value={productTitle}
             color="text.200"
             variant="filled"
             placeholder="Search"
+            onChange={inputChange}
           />
+          <InputRightElement width="4.5rem">
+            <Button
+              size="sm"
+              height="1.75rem"
+              bg="dark.100"
+              color="text.200"
+              onClick={HandleClick}
+            >
+              Search
+            </Button>
+          </InputRightElement>
         </InputGroup>
       </div>
       <div className="headerRight">

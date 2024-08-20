@@ -1,6 +1,4 @@
-import { Products } from "@/utils/types/ProductTypes";
-
-export async function Fetcher(apiUrl: string): Promise<Products> {
+export async function Fetcher(apiUrl: string) {
   try {
     // const response = await fetch("https://api.escuelajs.co/api/v1/products");
     const response = await fetch(apiUrl);
