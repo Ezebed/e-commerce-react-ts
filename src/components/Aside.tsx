@@ -1,5 +1,7 @@
 import { ProductsContext } from "@/context/ProductsContext";
 import { useContext } from "react";
+import CategoryCard from "./Product/Categories/CategoryCard";
+import { Box, Heading } from "@chakra-ui/react";
 
 export default function Aside(): JSX.Element {
   const productContext = useContext(ProductsContext);
@@ -8,16 +10,26 @@ export default function Aside(): JSX.Element {
     return <p>Loading...</p>;
   }
 
-  const { categories } = productContext;
+  const { categories, category, changeCategory } = productContext;
 
   return (
     <>
-      <h2>Categories</h2>
-      <ul>
-        {categories?.map((category) => (
-          <li key={category.id}>{category.name}</li>
+      <Heading as="h2" fontSize="2xl">
+        Categories {category}
+      </Heading>
+
+      <Box display="flex" flexDir="column" gap="8px">
+        {categories?.map((categoryItem) => (
+          <CategoryCard
+            key={categoryItem.id}
+            id={categoryItem.id}
+            name={categoryItem.name}
+            image={categoryItem.image}
+            active={category === categoryItem.id}
+            changeCategory={changeCategory}
+          />
         ))}
-      </ul>
+      </Box>
     </>
   );
 }

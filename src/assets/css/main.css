@@ -19,9 +19,12 @@ body {
 
 /* main {
 }
-
+*/
 aside {
-} */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
 header {
   background: var(--darkPrimary);

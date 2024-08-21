@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 export interface useProductsResponse {
   products: Products | undefined;
   categories: Categories | undefined;
+  category: number;
   searchProduct: (productTitle: string) => void;
+  changeCategory: (categoryId: number) => void;
 }
 
 export function useProducts(): useProductsResponse {
@@ -15,6 +17,7 @@ export function useProducts(): useProductsResponse {
   const [categories, setCategories] = useState<Categories | undefined>(
     undefined
   );
+  const [category, setCategory] = useState<number>(0);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,6 +28,7 @@ export function useProducts(): useProductsResponse {
         console.error("error getting data", error);
       }
     };
+    console.log(apiUrl);
     getProducts();
   }, [apiUrl]);
 
@@ -41,12 +45,31 @@ export function useProducts(): useProductsResponse {
   }, []);
 
   const searchProduct = (productTitle: string) => {
-    setApiUrl(`${apiBaseUrl}products/?title=${productTitle}`);
+    if (category !== 0) {
+      setApiUrl(
+        `${apiBaseUrl}products/?title=${productTitle}&categoryId=${category}`
+      );
+    } else {
+      setApiUrl(`${apiBaseUrl}products/?title=${productTitle}`);
+    }
+  };
+
+  const changeCategory = (categoryId: number) => {
+    let newCategory = categoryId === category ? 0 : categoryId;
+    setCategory(newCategory);
+
+    if (newCategory === 0) {
+      setApiUrl(`${apiBaseUrl}products`);
+    } else {
+      setApiUrl(`${apiBaseUrl}categories/${newCategory}/products`);
+    }
   };
 
   return {
     products,
     categories,
+    category,
     searchProduct,
+    changeCategory,
   };
 }
