@@ -15,7 +15,7 @@ export default function Aside(): JSX.Element {
   return (
     <>
       <Heading as="h2" fontSize="2xl">
-        Categories {category}
+        Categories
       </Heading>
 
       <Box display="flex" flexDir="column" gap="8px">

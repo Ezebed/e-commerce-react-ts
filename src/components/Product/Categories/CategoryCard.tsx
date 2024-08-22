@@ -1,6 +1,5 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import placeholderImg from "@/assets/img/img_placeholder.webp";
-import { useState } from "react";
 
 export type CategoryCardProps = {
   id: number;

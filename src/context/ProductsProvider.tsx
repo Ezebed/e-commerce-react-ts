@@ -1,6 +1,8 @@
 import { ProductsContext } from "./ProductsContext";
+import { ShopCartContext } from "./ShopCartContext";
 import { PropsWithChildren } from "react";
 import { useProducts } from "@/Hooks/useProducts";
+import useShopCart from "@/Hooks/useShopCart";
 
 export default function ProductsProvider({
   children,
@@ -8,17 +10,21 @@ export default function ProductsProvider({
   const { products, categories, category, searchProduct, changeCategory } =
     useProducts();
 
+  const { shopCart } = useShopCart();
+
   return (
     <ProductsContext.Provider
       value={{
-        products: products,
-        categories: categories,
-        category: category,
-        searchProduct: searchProduct,
-        changeCategory: changeCategory,
+        products,
+        categories,
+        category,
+        searchProduct,
+        changeCategory,
       }}
     >
-      {children}
+      <ShopCartContext.Provider value={{ shopCart }}>
+        {children}
+      </ShopCartContext.Provider>
     </ProductsContext.Provider>
   );
 }

@@ -54,6 +54,8 @@ header {
   grid-column: span 3 / span 3;
   grid-column-start: 10;
   display: flex;
+  gap: 8px;
+  align-items: center;
   justify-content: end;
 }
 

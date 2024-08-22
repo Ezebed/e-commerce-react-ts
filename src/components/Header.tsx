@@ -10,6 +10,7 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { ProductsContext } from "@/context/ProductsContext";
 import { useContext, useState, ChangeEvent } from "react";
+import ShopCartDrawer from "./ShopCart/ShopCartDrawer";
 
 export default function Header(): JSX.Element {
   const [productTitle, setProductTitle] = useState<string>("");
@@ -64,6 +65,7 @@ export default function Header(): JSX.Element {
         </InputGroup>
       </div>
       <div className="headerRight">
+        <ShopCartDrawer />
         <Avatar />
       </div>
     </header>
