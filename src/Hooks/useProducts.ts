@@ -28,7 +28,7 @@ export function useProducts(): useProductsResponse {
         console.error("error getting data", error);
       }
     };
-    console.log(apiUrl);
+
     getProducts();
   }, [apiUrl]);
 

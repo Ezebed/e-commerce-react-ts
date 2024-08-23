@@ -31,7 +31,7 @@ export default function Header(): JSX.Element {
   };
 
   return (
-    <header>
+    <header className="appHeader">
       <div className="headerLeft">
         <Link to="/" className="siteLogo ">
           EzeStore
