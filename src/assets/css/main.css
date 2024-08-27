@@ -17,15 +17,6 @@ body {
   background: var(--background) !important;
 }
 
-/* main {
-}
-*/
-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .appHeader {
   background: var(--darkPrimary);
   padding: 0.5em;

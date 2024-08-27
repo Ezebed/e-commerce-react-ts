@@ -1,21 +1,35 @@
-import MainLayout from "@/components/layouts/MainLayout";
-import { ProductsContext } from "@/context/ProductsContext";
-import { useContext } from "react";
-
 import ProductaCardList from "@/components/Product/ProductCarList";
+import { useProducts } from "@/Hooks/useProducts";
+import Header from "@/components/Header";
+import Aside from "@/components/Aside";
+import { Box, Heading } from "@chakra-ui/react";
 
 export default function prueba(): JSX.Element {
-  const productsContext = useContext(ProductsContext);
-
-  if (!productsContext) {
-    return <p>Loading....</p>;
-  }
-
-  const { products } = productsContext;
-
+  const { products, productsLoading, productsError, changeProductTitle } =
+    useProducts();
   return (
-    <MainLayout>
-      <ProductaCardList products={products!} />
-    </MainLayout>
+    <>
+      <Header changeProductTitle={changeProductTitle} />
+
+      <Box className="mainLayout">
+        <main>
+          {productsError && (
+            <Heading as="h2" fontSize="xl" margin="0 auto">
+              A Ocurrido un Error
+            </Heading>
+          )}
+          {productsLoading && (
+            <Heading as="h2" fontSize="xl" margin="0 auto">
+              Cargando Productos....
+            </Heading>
+          )}
+          {!productsLoading && !productsError && (
+            <ProductaCardList products={products!} />
+          )}
+        </main>
+
+        <Aside />
+      </Box>
+    </>
   );
 }

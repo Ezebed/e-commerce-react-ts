@@ -8,26 +8,24 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { ProductsContext } from "@/context/ProductsContext";
-import { useContext, useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import ShopCartDrawer from "./ShopCart/ShopCartDrawer";
 
-export default function Header(): JSX.Element {
+interface HeaderProps {
+  changeProductTitle: (newproductTitle: string) => void;
+}
+
+export default function Header({
+  changeProductTitle,
+}: HeaderProps): JSX.Element {
   const [productTitle, setProductTitle] = useState<string>("");
-  const productContext = useContext(ProductsContext);
-
-  if (!productContext) {
-    return <p>Loading...</p>;
-  }
-
-  const { searchProduct } = productContext;
 
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setProductTitle(e.target.value);
   };
 
   const HandleClick = () => {
-    if (productTitle) searchProduct(productTitle);
+    changeProductTitle(productTitle);
   };
 
   return (
@@ -58,6 +56,7 @@ export default function Header(): JSX.Element {
               bg="dark.200"
               color="text.100"
               onClick={HandleClick}
+              autoFocus
             >
               Search
             </Button>

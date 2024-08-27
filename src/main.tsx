@@ -5,19 +5,23 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Prueba from "./Pages/prueba.tsx";
 import theme from "@/utils/chakraTheme.ts";
-import ProductsProvider from "./context/ProductsProvider.tsx";
+import "@/assets/css/main.css";
+
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ChakraProvider theme={theme}>
-      <ProductsProvider>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/hola" element={<Prueba />} />
           </Routes>
         </BrowserRouter>
-      </ProductsProvider>
+      </QueryClientProvider>
     </ChakraProvider>
   </StrictMode>
 );
