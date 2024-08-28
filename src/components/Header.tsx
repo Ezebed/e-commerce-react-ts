@@ -10,15 +10,13 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { useState, ChangeEvent } from "react";
 import ShopCartDrawer from "./ShopCart/ShopCartDrawer";
+import { useProductsParams } from "@/Store/ProductsParamsStore/useProductsParams";
 
-interface HeaderProps {
-  changeProductTitle: (newproductTitle: string) => void;
-}
-
-export default function Header({
-  changeProductTitle,
-}: HeaderProps): JSX.Element {
+export default function Header(): JSX.Element {
   const [productTitle, setProductTitle] = useState<string>("");
+  const changeProductTitle = useProductsParams(
+    (state) => state.changeProductTitle
+  );
 
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setProductTitle(e.target.value);

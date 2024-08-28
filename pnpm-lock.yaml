@@ -41,6 +41,9 @@ importers:
       vite-tsconfig-paths:
         specifier: 4.0.0-alpha.5
         version: 4.0.0-alpha.5(typescript@5.5.3)(vite@5.4.0)
+      zustand:
+        specifier: ^4.5.5
+        version: 4.5.5(@types/react@18.3.3)(react@18.3.1)
     devDependencies:
       '@eslint/js':
         specifier: 9.8.0
@@ -1847,6 +1850,11 @@ packages:
       '@types/react':
         optional: true
 
+  use-sync-external-store@1.2.2:
+    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   vite-tsconfig-paths@4.0.0-alpha.5:
     resolution: {integrity: sha512-nSPqJd6LuSsSwCEoSQ3vMWU5X3D8fhl6YPUVzHb0qMvlnI3QlCUboc5fdsYRHYbvOjcf8cBEEQgWQWYplhBP0g==}
     peerDependencies:
@@ -1899,6 +1907,21 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zustand@4.5.5:
+    resolution: {integrity: sha512-+0PALYNJNgK6hldkgDq2vLrw5f6g/jCInz52n9RTpropGgeAf/ioFUCdtsjCqu4gNhW9D01rUQBROoRjdzyn2Q==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
 
 snapshots:
 
@@ -3816,6 +3839,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
 
+  use-sync-external-store@1.2.2(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+
   vite-tsconfig-paths@4.0.0-alpha.5(typescript@5.5.3)(vite@5.4.0):
     dependencies:
       debug: 4.3.6
@@ -3843,3 +3870,10 @@ snapshots:
   yaml@1.10.2: {}
 
   yocto-queue@0.1.0: {}
+
+  zustand@4.5.5(@types/react@18.3.3)(react@18.3.1):
+    dependencies:
+      use-sync-external-store: 1.2.2(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.3
+      react: 18.3.1
