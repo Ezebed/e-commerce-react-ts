@@ -37,7 +37,7 @@ export default function CategoryCard({
         objectFit="cover"
         height="4rem"
         width="4rem"
-      />{" "}
+      />
       <Text fontSize="xl">{name}</Text>
     </Box>
   );

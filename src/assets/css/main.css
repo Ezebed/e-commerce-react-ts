@@ -25,6 +25,9 @@ body {
   grid-template-columns: repeat(12, 1fr);
   gap: 8px;
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .headerLeft {
@@ -58,9 +61,12 @@ body {
   position: relative;
   background: var(--darkSecundary);
   width: 13rem;
-  height: 16rem;
+  height: 17rem;
   border-radius: 5px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .productTitle {

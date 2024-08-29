@@ -1,6 +1,7 @@
 import { Product } from "@/utils/types/ProductTypes.d";
 import ImgCarousel from "@/components/Product/ImgCarousel";
 import { Badge, Box, Text } from "@chakra-ui/react";
+import ShopCartButtons from "../ShopCart/ShopCartButtons";
 
 export default function ProductCard({
   id,
@@ -23,6 +24,7 @@ export default function ProductCard({
         </Badge>
         <p className="productDescription">{description}</p>
       </Box>
+      <ShopCartButtons id={id} name={title} price={price} />
     </Box>
   );
 }

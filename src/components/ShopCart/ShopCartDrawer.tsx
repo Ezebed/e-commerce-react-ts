@@ -1,4 +1,5 @@
 import { MdiCart } from "@/Icons/MdiCart";
+import { useShopCart } from "@/Store/ShopCartStore/useShopCart";
 import {
   IconButton,
   Icon,
@@ -7,7 +8,6 @@ import {
   DrawerFooter,
   Button,
   DrawerBody,
-  Input,
   DrawerHeader,
   DrawerCloseButton,
   DrawerOverlay,
@@ -20,6 +20,10 @@ import { useRef } from "react";
 export default function ShopCartDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
+
+  const cartItems = useShopCart((state) => state.cartItems);
+  const cleanCart = useShopCart((state) => state.cleanCart);
+
   return (
     <>
       <div className="position-relative">
@@ -33,16 +37,18 @@ export default function ShopCartDrawer() {
           onClick={onOpen}
           icon={<Icon as={MdiCart} />}
         />
-        <Tag
-          position="absolute"
-          bottom="-4px"
-          right="-4px"
-          size="sm"
-          colorScheme="green"
-          borderRadius="50px"
-        >
-          5
-        </Tag>
+        {cartItems.length > 0 && (
+          <Tag
+            position="absolute"
+            bottom="-4px"
+            right="-4px"
+            size="sm"
+            colorScheme="green"
+            borderRadius="50px"
+          >
+            {cartItems.length}
+          </Tag>
+        )}
       </div>
 
       <Drawer
@@ -64,19 +70,22 @@ export default function ShopCartDrawer() {
           </DrawerHeader>
 
           <DrawerBody bg="dark.200">
-            <Input placeholder="Type here..." />
+            {cartItems.length >= 0 && (
+              <Text>
+                {cartItems.map((item) => (
+                  <Text lineHeight="1lh">
+                    {item.name} X{item.quantity}
+                  </Text>
+                ))}
+              </Text>
+            )}
+            {cartItems.length === 0 && <Text>Shop Cart Empty</Text>}
           </DrawerBody>
 
           <DrawerFooter bg="dark.100">
-            <Button
-              variant="outline"
-              mr={3}
-              colorScheme="red"
-              onClick={onClose}
-            >
-              Cancel
+            <Button mr={3} colorScheme="red" onClick={cleanCart}>
+              Clean Cart
             </Button>
-            <Button colorScheme="blue">Save</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
