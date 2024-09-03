@@ -1,5 +1,5 @@
 import { useCategories } from "@/Hooks/useCategories";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
 import CategoryCardList from "./Product/Categories/categoryCardList";
 
 export default function Aside(): JSX.Element {
@@ -26,9 +26,12 @@ export default function Aside(): JSX.Element {
           </Heading>
         )}
         {categoriesLoading && (
-          <Heading as="h2" fontSize="xl" margin="0 auto">
-            Loading Categories....
-          </Heading>
+          <Flex gap="8px" alignItems="center" margin="0 auto">
+            <Spinner color="green.500" />
+            <Heading as="h2" fontSize="xl">
+              Loading Categories....
+            </Heading>
+          </Flex>
         )}
       </Box>
     </aside>

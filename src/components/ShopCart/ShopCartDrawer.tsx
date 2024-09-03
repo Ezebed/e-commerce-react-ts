@@ -1,3 +1,4 @@
+import { F7MoneyDollar } from "@/Icons/F7MoneyDollar";
 import { MdiCart } from "@/Icons/MdiCart";
 import { useShopCart } from "@/Store/ShopCartStore/useShopCart";
 import {
@@ -14,14 +15,19 @@ import {
   useDisclosure,
   Tag,
   Text,
+  VStack,
+  StackDivider,
+  HStack,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import ShopCartTable from "./ShopCartTable";
 
 export default function ShopCartDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
 
   const cartItems = useShopCart((state) => state.cartItems);
+  const removeCartItem = useShopCart((state) => state.removeCartItem);
   const cleanCart = useShopCart((state) => state.cleanCart);
 
   return (
@@ -56,6 +62,7 @@ export default function ShopCartDrawer() {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
+        size="md"
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -66,24 +73,37 @@ export default function ShopCartDrawer() {
             alignItems="center"
             gap="8px"
           >
-            Shop Cart <Icon boxSize="20px" as={MdiCart} />{" "}
+            Shop Cart <Icon boxSize="20px" as={MdiCart} />
           </DrawerHeader>
 
           <DrawerBody bg="dark.200">
-            {cartItems.length >= 0 && (
-              <Text>
-                {cartItems.map((item) => (
-                  <Text lineHeight="1lh">
-                    {item.name} X{item.quantity}
-                  </Text>
-                ))}
-              </Text>
+            {cartItems.length > 0 && (
+              <ShopCartTable
+                cartItems={cartItems}
+                removeCartItem={removeCartItem}
+              />
             )}
-            {cartItems.length === 0 && <Text>Shop Cart Empty</Text>}
+
+            {cartItems.length === 0 && <Text>Shop Cart Is Empty</Text>}
           </DrawerBody>
 
-          <DrawerFooter bg="dark.100">
-            <Button mr={3} colorScheme="red" onClick={cleanCart}>
+          <DrawerFooter bg="dark.100" gap="8px">
+            <HStack width="100%">
+              <Text fontSize="3xl" as="b">
+                Total ={" "}
+                {cartItems.reduce(
+                  (acc, item) => acc + item.price * item.quantity,
+                  0
+                )}
+              </Text>
+              <Icon as={F7MoneyDollar} boxSize={8} />
+            </HStack>
+            <Button
+              mr={3}
+              colorScheme="red"
+              onClick={cleanCart}
+              disabled={cartItems.length === 0}
+            >
               Clean Cart
             </Button>
           </DrawerFooter>

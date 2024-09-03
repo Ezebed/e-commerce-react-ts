@@ -143,7 +143,7 @@ body {
     display: flex;
     height: 100%;
     justify-content: space-between;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     gap: 1em;
   }
 
