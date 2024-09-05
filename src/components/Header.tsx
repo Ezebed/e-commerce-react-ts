@@ -53,8 +53,8 @@ export default function Header(): JSX.Element {
               height="1.75rem"
               bg="dark.200"
               color="text.100"
+              _hover={{ bg: "green.500" }}
               onClick={HandleClick}
-              autoFocus
             >
               Search
             </Button>

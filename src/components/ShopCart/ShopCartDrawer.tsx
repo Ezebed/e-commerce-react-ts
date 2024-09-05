@@ -15,8 +15,6 @@ import {
   useDisclosure,
   Tag,
   Text,
-  VStack,
-  StackDivider,
   HStack,
 } from "@chakra-ui/react";
 import { useRef } from "react";

@@ -3,6 +3,8 @@ import ImgCarousel from "@/components/Product/ImgCarousel";
 import { Badge, Box, Text } from "@chakra-ui/react";
 import ShopCartButtons from "../ShopCart/ShopCartButtons";
 
+type ProductCardProps = Omit<Product, "creationAt" | "updatedAt">;
+
 export default function ProductCard({
   id,
   title,
@@ -10,9 +12,7 @@ export default function ProductCard({
   description,
   images,
   category,
-  creationAt,
-  updatedAt,
-}: Product): JSX.Element {
+}: ProductCardProps): JSX.Element {
   return (
     <Box className="productCard">
       <Text className="productTitle">{title}</Text>

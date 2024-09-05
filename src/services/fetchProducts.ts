@@ -3,11 +3,12 @@ import { Products } from "@/utils/types/ProductTypes.d";
 
 export async function fetchProducts(
   productTitle: string,
-  categoryID: number
+  categoryID: number,
+  offset: number
 ): Promise<Products> {
   try {
     const response = await fetch(
-      `${apiBaseUrl}products/?title=${productTitle}&categoryId=${categoryID}`
+      `${apiBaseUrl}products/?title=${productTitle}&categoryId=${categoryID}&offset=${offset}&limit=16`
     );
 
     if (!response.ok) {

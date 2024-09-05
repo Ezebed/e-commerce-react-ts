@@ -1,6 +1,6 @@
 import { useShopCart } from "@/Store/ShopCartStore/useShopCart";
 import { Item } from "@/utils/types/ShopCartTypes.d";
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Button, Flex, IconButton } from "@chakra-ui/react";
 import { MdiCartPlus } from "@/Icons/MdiCartPlus";
 import { MdiCartMinus } from "@/Icons/MdiCartMinus";
 
@@ -24,6 +24,7 @@ export default function ShopCartButtons({
           <IconButton
             aria-label="remove from cart"
             size="md"
+            width="60px"
             colorScheme="red"
             onClick={() => removeCartItem(id)}
             icon={<MdiCartMinus />}
@@ -41,15 +42,25 @@ export default function ShopCartButtons({
           >
             {cartItems[cartItemIndex].quantity}
           </Flex>
+          <IconButton
+            aria-label="add to cart"
+            size="md"
+            width="60px"
+            colorScheme="green"
+            onClick={() => addCartItem({ id: id, name: name, price: price })}
+            icon={<MdiCartPlus />}
+          />
         </>
       )}
-      <IconButton
-        aria-label="add to cart"
-        size="md"
-        colorScheme="green"
-        onClick={() => addCartItem({ id: id, name: name, price: price })}
-        icon={<MdiCartPlus />}
-      />
+      {!isInCart && (
+        <Button
+          colorScheme="green"
+          width="100%"
+          onClick={() => addCartItem({ id: id, name: name, price: price })}
+        >
+          Add to Cart
+        </Button>
+      )}
     </Flex>
   );
 }
