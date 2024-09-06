@@ -1,11 +1,20 @@
 import ProductaCardList from "@/components/Product/ProductCarList";
 import { useProducts } from "@/Hooks/useProducts";
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Aside from "@/components/Aside";
-import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Spinner } from "@chakra-ui/react";
 
 export default function prueba(): JSX.Element {
-  const { products, productsLoading, productsError } = useProducts();
+  const {
+    products,
+    productsLoading,
+    productsError,
+    getMore,
+    hasMore,
+    moreProductsLoading,
+    moreProductsError,
+  } = useProducts();
+
   return (
     <>
       <Header />
@@ -21,18 +30,31 @@ export default function prueba(): JSX.Element {
               No Produtcs To Show
             </Heading>
           )}
-          {productsError && (
+          {(productsError || moreProductsError) && (
             <Heading as="h2" fontSize="xl" margin="0 auto">
               An Error Occurred
             </Heading>
           )}
           {productsLoading && (
-            <Flex gap="8px" alignItems="center" margin="0 auto">
+            <Center gap="8px" padding="10px">
               <Spinner color="green.500" />
               <Heading as="h2" fontSize="xl">
                 Loading Products....
               </Heading>
-            </Flex>
+            </Center>
+          )}
+          {hasMore && (
+            <Center padding="10px">
+              <Button
+                colorScheme="green"
+                size={{ base: "lg", md: "md" }}
+                isLoading={moreProductsLoading}
+                loadingText="Loading More Products...."
+                onClick={() => getMore()}
+              >
+                Load More Products
+              </Button>
+            </Center>
           )}
         </main>
       </Box>

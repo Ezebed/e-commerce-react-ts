@@ -18,7 +18,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import ShopCartTable from "./ShopCartTable";
+import ShopCartList from "./ShopCartList";
 
 export default function ShopCartDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -76,10 +76,12 @@ export default function ShopCartDrawer() {
 
           <DrawerBody bg="dark.200">
             {cartItems.length > 0 && (
-              <ShopCartTable
-                cartItems={cartItems}
-                removeCartItem={removeCartItem}
-              />
+              <>
+                <ShopCartList
+                  cartItems={cartItems}
+                  removeCartItem={removeCartItem}
+                />
+              </>
             )}
 
             {cartItems.length === 0 && <Text>Shop Cart Is Empty</Text>}
