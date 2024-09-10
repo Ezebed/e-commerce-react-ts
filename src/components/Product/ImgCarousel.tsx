@@ -20,7 +20,11 @@ export default function ImgCarousel({ imgUrl }: ImgCarouselProps): JSX.Element {
   }, []);
 
   return (
-    <Box width="100%" height="9rem" position="relative">
+    <Box
+      width={{ base: "85%", sm: "100%" }}
+      height={{ base: "100%", sm: "9rem" }}
+      position="relative"
+    >
       <Box display="flex" overflow="hidden" width="100%" height="100%">
         {imgUrl.map((imgSrc, index) => (
           <Image

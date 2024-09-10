@@ -18,7 +18,7 @@ body {
 }
 
 main {
-  padding: 10px;
+  padding-top: 10px;
 }
 
 .appHeader {
@@ -153,6 +153,7 @@ main {
 
   main {
     width: 75%;
+    padding: 10px;
   }
 
   aside {

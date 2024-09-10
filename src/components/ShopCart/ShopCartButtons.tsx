@@ -18,7 +18,7 @@ export default function ShopCartButtons({
   const isInCart = cartItemIndex >= 0;
 
   return (
-    <Flex gap="8px" padding="0 0.5rem" justifyContent="center">
+    <Flex gap="8px" justifyContent="center">
       {isInCart && cartItems[cartItemIndex] && (
         <>
           <IconButton

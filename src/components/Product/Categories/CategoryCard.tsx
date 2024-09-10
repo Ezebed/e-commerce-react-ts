@@ -38,7 +38,9 @@ export default function CategoryCard({
         height="4rem"
         width="4rem"
       />
-      <Text fontSize="xl">{name}</Text>
+      <Text fontSize="xl" noOfLines={2}>
+        {name}
+      </Text>
     </Box>
   );
 }
