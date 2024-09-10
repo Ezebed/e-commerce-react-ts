@@ -12,10 +12,12 @@ export function useProducts() {
       await fetchProducts(productTitle, categoryID, pageParam),
     initialPageParam: 0,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.length === 0) return undefined;
+      if (lastPage.length === 0 || lastPage.length < 16) return undefined;
       return lastPageParam + 16;
     },
     refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    gcTime: 180000,
   });
 
   return {

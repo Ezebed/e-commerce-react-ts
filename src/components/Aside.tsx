@@ -1,6 +1,7 @@
 import { useCategories } from "@/Hooks/useCategories";
-import { Box, Flex, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import CategoryCardList from "./Product/Categories/categoryCardList";
+import CategoryCardSkeleton from "./Product/Categories/CategoryCardSkeleton";
 
 export default function Aside(): JSX.Element {
   const { categories, categoriesLoading, categoriesError } = useCategories();
@@ -26,12 +27,15 @@ export default function Aside(): JSX.Element {
           </Heading>
         )}
         {categoriesLoading && (
-          <Flex gap="8px" alignItems="center" margin="0 auto">
-            <Spinner color="green.500" />
-            <Heading as="h2" fontSize="xl">
-              Loading Categories....
-            </Heading>
-          </Flex>
+          <>
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+            <CategoryCardSkeleton />
+          </>
         )}
       </Box>
     </aside>

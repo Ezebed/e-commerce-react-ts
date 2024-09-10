@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
 
 function App() {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
+
+  const navigateToProducts = () => {
+    startTransition(() => {
+      navigate("/products");
+    });
+  };
 
   return (
     <>
@@ -28,7 +36,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Link to="/hola">pagina</Link>
+      <Button onClick={navigateToProducts}>Pagina</Button>
     </>
   );
 }

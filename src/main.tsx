@@ -1,15 +1,17 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import Prueba from "./Pages/prueba.tsx";
+// import Prueba from "./Pages/prueba.tsx";
 import theme from "@/utils/chakraTheme.ts";
 import "@/assets/css/main.css";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
+
+const LazyProducts = lazy(() => import("@/Pages/Products.tsx"));
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,7 +20,7 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/hola" element={<Prueba />} />
+            <Route path="/products" element={<LazyProducts />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

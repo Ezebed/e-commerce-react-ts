@@ -51,7 +51,7 @@ export default function SearchInput(): JSX.Element {
         value={productTitle}
         color="text.100"
         variant="filled"
-        placeholder="Search"
+        placeholder="Iphone, Adidas, Laptops..."
         _placeholder={{ color: "text.100" }}
         onChange={inputChange}
       />

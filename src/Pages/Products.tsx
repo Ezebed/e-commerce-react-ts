@@ -2,9 +2,10 @@ import ProductaCardList from "@/components/Product/ProductCarList";
 import { useProducts } from "@/Hooks/useProducts";
 import Header from "@/components/Header/Header";
 import Aside from "@/components/Aside";
-import { Box, Button, Center, Heading, Spinner } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import ProductCardSkeleton from "@/components/Product/ProductCardSkeleton";
 
-export default function prueba(): JSX.Element {
+export default function Products(): JSX.Element {
   const {
     products,
     productsLoading,
@@ -35,13 +36,33 @@ export default function prueba(): JSX.Element {
               An Error Occurred
             </Heading>
           )}
-          {productsLoading && (
-            <Center gap="8px" padding="10px">
-              <Spinner color="green.500" />
-              <Heading as="h2" fontSize="xl">
-                Loading Products....
-              </Heading>
-            </Center>
+          {(productsLoading || moreProductsLoading) && (
+            <Wrap justify={{ base: "center", md: "left" }} mt="10px">
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+              <WrapItem>
+                <ProductCardSkeleton />
+              </WrapItem>
+            </Wrap>
           )}
           {hasMore && (
             <Center padding="10px">
