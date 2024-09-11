@@ -1,11 +1,23 @@
-import { startTransition, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { startTransition } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Heading,
+  Icon,
+  SimpleGrid,
+  Text,
+  Tooltip,
+  VStack,
+} from "@chakra-ui/react";
+import BackgroundBlob from "./Icons/BackgroundBlob";
+import { SkillIconsReactDark } from "./Icons/ReactDark";
+import { SkillIconsTypescript } from "./Icons/SkillIconTypescript";
+import { DeviconChakraui } from "./Icons/DeviconChakraUi";
 
 function App() {
-  const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   const navigateToProducts = () => {
@@ -16,27 +28,32 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <Button onClick={navigateToProducts}>Pagina</Button>
+      <BackgroundBlob filter="blur(70px)" className="bgBlob" />
+      <SimpleGrid columns={2} spacing="16px" padding="16px">
+        <VStack gap="12px" alignItems="left">
+          <Heading as="h1" fontWeight="bold">
+            e-commerce Shop Cart
+          </Heading>
+          <Text fontSize="xl" width="70%">
+            e-commerce falso para el desarrollo de un pseudo carritos de
+            compras.
+          </Text>
+
+          <HStack>
+            <Text fontSize="xl">Tecnologias utilizadas:</Text>
+
+            <Icon boxSize={8} as={SkillIconsReactDark} />
+
+            <Icon boxSize={8} as={SkillIconsTypescript} />
+
+            <Icon boxSize={8} as={DeviconChakraui} />
+          </HStack>
+
+          <Button width="fit-content" onClick={navigateToProducts}>
+            Pagina
+          </Button>
+        </VStack>
+      </SimpleGrid>
     </>
   );
 }
