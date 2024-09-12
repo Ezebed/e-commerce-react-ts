@@ -12,7 +12,6 @@ import {
   Image,
   Link,
   Show,
-  SimpleGrid,
   Text,
   VStack,
 } from "@chakra-ui/react";
