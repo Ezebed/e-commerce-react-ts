@@ -111,6 +111,14 @@ main {
   z-index: -10;
 }
 
+#react-tooltip,
+#typescript-tooltip,
+#chakra-tooltip {
+  /* background-color: #38a169; */
+  border: solid 1px black;
+  font-weight: bold;
+}
+
 @media (width > 768px) {
   .mainLayout {
     display: flex;
