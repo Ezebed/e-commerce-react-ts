@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
-import { fireEvent, render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import CategoryCard from "./CategoryCard";
 
 describe("category card component", () => {
@@ -17,6 +17,5 @@ describe("category card component", () => {
 
   test("category card is rederer", () => {
     expect(screen.getByText(/category name/i)).toBeDefined();
-    screen.debug();
   });
 });
