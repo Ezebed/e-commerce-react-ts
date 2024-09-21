@@ -17,6 +17,13 @@ const mockCategories: Categories = [
     creationAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-02T00:00:00Z",
   },
+  {
+    id: 3,
+    name: "Empty Category",
+    image: "https://example.com/emptyCategory.jpg",
+    creationAt: "2024-01-01T00:00:00Z",
+    updatedAt: "2024-01-02T00:00:00Z",
+  },
 ];
 
 const mockProducts: Products = [
