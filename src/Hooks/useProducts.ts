@@ -14,6 +14,9 @@ export function useProducts() {
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0 || lastPage.length < 16) return undefined;
       return lastPageParam + 16;
+      // Do nothing
+      if (allPages) {
+      }
     },
     refetchOnWindowFocus: false,
     staleTime: Infinity,

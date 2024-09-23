@@ -10,7 +10,7 @@ type mainLayout = {
 export default function MainLayout({ children }: mainLayout): JSX.Element {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <div className="mainLayout">
         <main>{children}</main>
         <aside>
